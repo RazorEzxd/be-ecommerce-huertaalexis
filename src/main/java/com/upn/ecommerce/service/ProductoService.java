@@ -22,12 +22,15 @@ public class ProductoService {
     return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado: " + id));
   }
   private Producto copiar(Producto p, ProductoDTO d) {
-    p.setNombre(d.nombre()); p.setCategoria(d.categoria()); p.setPrecio(d.precio());
-    p.setStock(d.stock()); p.setMarca(d.marca()); p.setCodigoBarras(d.codigoBarras());
-    return p;
-  }
-  private ProductoDTO toDTO(Producto p) {
-    return new ProductoDTO(p.getId(), p.getNombre(), p.getCategoria(), p.getPrecio(),
-        p.getStock(), p.getMarca(), p.getCodigoBarras());
-  }
+	    p.setNombre(d.nombre()); p.setCategoria(d.categoria());
+	    p.setPrecioCompra(d.precioCompra()); p.setPrecioVenta(d.precioVenta());
+	    p.setStock(d.stock()); p.setMarca(d.marca()); p.setCodigoBarras(d.codigoBarras());
+	    if (d.fechaIngreso() != null) p.setFechaIngreso(d.fechaIngreso());
+	    else if (p.getFechaIngreso() == null) p.setFechaIngreso(java.time.LocalDate.now());
+	    return p;
+	  }
+	  private ProductoDTO toDTO(Producto p) {
+	    return new ProductoDTO(p.getId(), p.getNombre(), p.getCategoria(), p.getPrecioCompra(),
+	        p.getPrecioVenta(), p.getStock(), p.getMarca(), p.getCodigoBarras(), p.getFechaIngreso());
+	  }
 }

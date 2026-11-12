@@ -5,10 +5,12 @@ CREATE TABLE productos (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   categoria VARCHAR(60) NOT NULL,
-  precio DECIMAL(10,2) NOT NULL,
+  precio_compra DECIMAL(10,2) NOT NULL,
+  precio_venta DECIMAL(10,2) NOT NULL,
   stock INT NOT NULL,
   marca VARCHAR(60),
-  codigo_barras VARCHAR(30) UNIQUE
+  codigo_barras VARCHAR(30) UNIQUE,
+  fecha_ingreso DATE NOT NULL
 );
 
 CREATE TABLE pedidos (

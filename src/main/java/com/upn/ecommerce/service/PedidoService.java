@@ -29,8 +29,8 @@ public class PedidoService {
       pr.setStock(pr.getStock() - i.cantidad());
       DetallePedido d = new DetallePedido();
       d.setPedido(p); d.setProducto(pr); d.setCantidad(i.cantidad());
-      d.setPrecioUnitario(pr.getPrecio());
-      d.setSubtotal(pr.getPrecio().multiply(BigDecimal.valueOf(i.cantidad())));
+      d.setPrecioUnitario(pr.getPrecioVenta());
+      d.setSubtotal(pr.getPrecioVenta().multiply(BigDecimal.valueOf(i.cantidad())));
       p.getDetalles().add(d);
       total = total.add(d.getSubtotal());
     }

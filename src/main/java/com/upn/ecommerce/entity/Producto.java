@@ -1,8 +1,9 @@
 package com.upn.ecommerce.entity;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.*;
 import java.math.BigDecimal;
+import jakarta.persistence.*;
 
 @Entity @Table(name = "productos")
 @NamedQueries({
@@ -17,7 +18,9 @@ public class Producto {
   private Long id;
   private String nombre;
   private String categoria;
-  private BigDecimal precio;
+  private BigDecimal precioCompra;
+  private BigDecimal precioVenta;
+  private LocalDate fechaIngreso;
   private Integer stock;
   private String marca;
   private String codigoBarras;
